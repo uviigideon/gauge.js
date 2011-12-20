@@ -1,0 +1,1 @@
+in many of my projects I use <a href="http://code.google.com/apis/chart/interactive/docs/gallery/gauge.html">google's gauge</a>, but I needed to support offline mode, and google's charts require an internet connection. here is my go at recreating it using d3.js. 
