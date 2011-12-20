@@ -67,19 +67,19 @@ function Gauge(placeholderName, configuration)
 
 		if (undefined != this.config.label)
 		{
-			var fontSize = this.config.size / 9;
+			var fontSize = Math.round(this.config.size / 9);
 			this.body.append("svg:text")								
 						.attr("x", this.config.cx)
 						.attr("y", this.config.cy / 2 + fontSize / 2)			 			
 						.attr("dy", fontSize / 2)
 						.attr("text-anchor", "middle")
 						.text(this.config.label)
-						.style("font-size", fontSize)
+						.style("font-size", fontSize + "px")
 						.style("fill", "#333")
 						.style("stroke-width", "0px");	
 		}
 
-		var fontSize = this.config.size / 16;		
+		var fontSize = Math.round(this.config.size / 16);		
 		var majorDelta = this.config.range / (this.config.majorTicks - 1);
 		for (var major = this.config.min; major <= this.config.max; major += majorDelta)
 		{
@@ -119,7 +119,7 @@ function Gauge(placeholderName, configuration)
 				 			.attr("dy", fontSize / 3)
 				 			.attr("text-anchor", major == this.config.min ? "start" : "end")
 				 			.text(major)
-				 			.style("font-size", fontSize)
+				 			.style("font-size", fontSize + "px")
 							.style("fill", "#333")
 							.style("stroke-width", "0px");
 			}
@@ -191,7 +191,7 @@ function Gauge(placeholderName, configuration)
 					//.ease("linear")
 					//.duration(5000);
 
-		var fontSize = this.config.size / 10;
+		var fontSize = Math.round(this.config.size / 10);
 		pointerContainer.selectAll("text")
 							.data([value])
 								.text(Math.round(value))
@@ -202,7 +202,7 @@ function Gauge(placeholderName, configuration)
 									.attr("dy", fontSize / 2)
 									.attr("text-anchor", "middle")
 									.text(Math.round(value))
-									.style("font-size", fontSize)
+									.style("font-size", fontSize + "px")
 									.style("fill", "#000")
 									.style("stroke-width", "0px");
 	}
