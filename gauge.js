@@ -14,8 +14,8 @@ function Gauge(placeholderName, configuration)
 		this.config.cx = this.config.size / 2;
 		this.config.cy = this.config.size / 2;
 		
-		this.config.min = configuration.min || 0; 
-		this.config.max = configuration.max || 100; 
+		this.config.min = undefined != configuration.min ? configuration.min : 0; 
+		this.config.max = undefined != configuration.max ? configuration.max : 100; 
 		this.config.range = this.config.max - this.config.min;
 		
 		this.config.majorTicks = configuration.majorTicks || 5;

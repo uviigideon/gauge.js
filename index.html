@@ -27,8 +27,8 @@
 				{
 					size: 120,
 					label: label,
-					min: min || 0,
-					max: max || 100,
+					min: undefined != min ? min : 0,
+					max: undefined != max ? max : 100,
 					minorTicks: 5
 				}
 				
@@ -45,7 +45,7 @@
 				createGauge("memory", "Memory");
 				createGauge("cpu", "CPU");
 				createGauge("network", "Network");
-				//createGauge("test", "Test", -50, 50 );
+				createGauge("test", "Test", -50, 50 );
 			}
 			
 			function updateGauges()
