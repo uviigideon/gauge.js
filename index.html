@@ -42,19 +42,16 @@
 			
 			function createGauges()
 			{
-				createGauge("memory", "Memory");
-				createGauge("cpu", "CPU");
-				createGauge("network", "Network");
-				//createGauge("test", "Test", -50, 50 );
+				createGauge("temp", "Temp", -10, 50 );
+				createGauge("humidity", "Humidity", 0, 100 );
 			}
 			
 			function updateGauges()
 			{
-				for (var key in gauges)
-				{
-					var value = getRandomValue(gauges[key])
-					gauges[key].redraw(value);
-				}
+                var script = document.createElement('script');
+                script.src = 'https://thingspeak.com/channels/75140/feeds.json?results=1&callback=updateMyGauges';
+                script.type = 'text/javascript';
+                document.getElementsByTagName('head')[0].appendChild(script);
 			}
 			
 			function getRandomValue(gauge)
@@ -66,8 +63,21 @@
 			function initialize()
 			{
 				createGauges();
-				setInterval(updateGauges, 5000);
+                updateGauges();
+				setInterval(updateGauges, 120000);
 			}
+
+            function updateMyGauges() {
+                if (typeof console != 'undefined') {
+                    var t = arguments[0].feeds[0].field2;
+                    var h = arguments[0].feeds[0].field1;
+                    gauges["humidity"].redraw(h);
+                    gauges["temp"].redraw(t);
+                } else {
+                  alert('click debug button');
+                }
+            }
+         
 			
 		</script>
 		
@@ -75,10 +85,8 @@
 	</head>
 	
 	<body onload="initialize()">
-		<span id="memoryGaugeContainer"></span>
-		<span id="cpuGaugeContainer"></span>
-		<span id="networkGaugeContainer"></span>
-		<span id="testGaugeContainer"></span>
+		<span id="humidityGaugeContainer"></span>
+		<span id="tempGaugeContainer"></span>
 	</body>
 	
 </html>
