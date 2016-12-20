@@ -41,15 +41,15 @@ function Gauge(placeholderName, configuration)
 					.attr("cy", this.config.cy)
 					.attr("r", this.config.raduis)
 					.style("fill", "#ccc")
-					.style("stroke", "#000")
+					.style("stroke", "#eee")
 					.style("stroke-width", "0.5px");
 					
 		this.body.append("svg:circle")
 					.attr("cx", this.config.cx)
 					.attr("cy", this.config.cy)
-					.attr("r", 0.9 * this.config.raduis)
-					.style("fill", "#fff")
-					.style("stroke", "#e0e0e0")
+					.attr("r", 0.95 * this.config.raduis)
+					.style("fill", "#333")
+					.style("stroke", "#000")
 					.style("stroke-width", "2px");
 					
 		for (var index in this.config.greenZones)
@@ -77,7 +77,7 @@ function Gauge(placeholderName, configuration)
 						.attr("text-anchor", "middle")
 						.text(this.config.label)
 						.style("font-size", fontSize + "px")
-						.style("fill", "#333")
+						.style("fill", "#ccc")
 						.style("stroke-width", "0px");
 		}
 		
@@ -96,7 +96,7 @@ function Gauge(placeholderName, configuration)
 							.attr("y1", point1.y)
 							.attr("x2", point2.x)
 							.attr("y2", point2.y)
-							.style("stroke", "#666")
+							.style("stroke", "#999")
 							.style("stroke-width", "1px");
 			}
 			
@@ -108,7 +108,7 @@ function Gauge(placeholderName, configuration)
 						.attr("y1", point1.y)
 						.attr("x2", point2.x)
 						.attr("y2", point2.y)
-						.style("stroke", "#333")
+						.style("stroke", "#999")
 						.style("stroke-width", "2px");
 			
 			if (major == this.config.min || major == this.config.max)
@@ -122,7 +122,7 @@ function Gauge(placeholderName, configuration)
 				 			.attr("text-anchor", major == this.config.min ? "start" : "end")
 				 			.text(major)
 				 			.style("font-size", fontSize + "px")
-							.style("fill", "#333")
+							.style("fill", "#999")
 							.style("stroke-width", "0px");
 			}
 		}
@@ -165,7 +165,7 @@ function Gauge(placeholderName, configuration)
 									.attr("dy", fontSize / 2)
 									.attr("text-anchor", "middle")
 									.style("font-size", fontSize + "px")
-									.style("fill", "#000")
+									.style("fill", "#ccc")
 									.style("stroke-width", "0px");
 		
 		this.redraw(this.config.min, 0);
@@ -204,8 +204,8 @@ function Gauge(placeholderName, configuration)
 					.attr("d", d3.svg.arc()
 						.startAngle(this.valueToRadians(start))
 						.endAngle(this.valueToRadians(end))
-						.innerRadius(0.65 * this.config.raduis)
-						.outerRadius(0.85 * this.config.raduis))
+						.innerRadius(0.68 * this.config.raduis)
+						.outerRadius(0.88 * this.config.raduis))
 					.attr("transform", function() { return "translate(" + self.config.cx + ", " + self.config.cy + ") rotate(270)" });
 	}
 	
